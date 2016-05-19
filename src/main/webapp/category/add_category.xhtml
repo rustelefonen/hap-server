@@ -1,0 +1,31 @@
+<ui:composition template="../WEB-INF/template/template.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <ui:define name="content">
+        <f:metadata>
+            <f:viewAction action="#{categoryController.setNextOrderNumberOnCategory()}"/>
+        </f:metadata>
+
+        <h:form>
+            <p:messages />
+            <p:panelGrid columns="2" style="margin: 40px auto">
+                <f:facet name="header">
+                    <p:outputLabel value="Legg til en ny kategori"/>
+                </f:facet>
+
+                <p:outputLabel value="Kategoritittel"/>
+                <p:inputText value="#{categoryController.category.title}"/>
+
+                <p:outputLabel value="Sorteringsnummer"/>
+                <p:inputText converterMessage="Sorteringsnummer må være et tall." type="text" pattern="\d*" maxlength="9" value="#{categoryController.category.orderNumber}"/>
+
+                <h:outputText value=""/>
+                <p:commandButton value="Legg til" action="#{categoryController.addInfoCategory()}" update="@form"/>
+            </p:panelGrid>
+        </h:form>
+
+    </ui:define>
+</ui:composition>

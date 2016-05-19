@@ -1,0 +1,43 @@
+<ui:composition template="WEB-INF/template/template.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui" xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <ui:define name="content">
+        <div style="margin-top: 20px;">
+            <h:form>
+                <p:commandButton style=" margin-bottom: 20px;" value="Last ned alle innsendinger" ajax="false" onclick="PrimeFaces.monitorDownload(start, stop);" icon="ui-icon-arrowthick-1-s">
+                    <p:fileDownload value="#{researchDataController.file}" />
+                </p:commandButton>
+            </h:form>
+            <p:dialog modal="true" widgetVar="statusDialog" header="Status" draggable="false" closable="false" resizable="false">
+                <p:graphicImage name="/demo/images/ajaxloadingbar.gif" />
+            </p:dialog>
+
+            <h1 style="font-family: Helvetica Neue, sans-serif;" align="center">Siste 30 innsendinger</h1>
+            <p:dataTable value="#{researchDataController.researchUserList}" var="researchUser" style="margin: 40px auto auto;">
+                <p:column headerText="Alder">
+                    <p:outputLabel value="#{researchUser.age}"/>
+                </p:column>
+                <p:column headerText="Kjønn">
+                    <p:outputLabel value="#{researchUser.gender}">
+                        <f:converter converterId="GenderConverter"/>
+                    </p:outputLabel>
+                </p:column>
+                <p:column headerText="Fylke">
+                    <p:outputLabel value="#{researchUser.state}"/>
+                </p:column>
+            </p:dataTable>
+        </div>
+
+        <script type="text/javascript">
+            function start() {
+                PF('statusDialog').show();
+            }
+
+            function stop() {
+                PF('statusDialog').hide();
+            }
+        </script>
+    </ui:define>
+</ui:composition>

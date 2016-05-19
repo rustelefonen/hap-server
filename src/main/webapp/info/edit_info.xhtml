@@ -1,0 +1,20 @@
+<ui:composition template="../WEB-INF/template/template.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <ui:define name="content">
+        <f:metadata>
+            <f:viewParam name="infoId" value="#{infoController.infoId}"/>
+            <f:viewAction action="#{infoController.initInfoyById()}"/>
+            <f:viewAction action="#{infoController.loadAllCategories()}"/>
+            <f:viewAction action="#{infoController.setCurrentCategoryId()}"/>
+        </f:metadata>
+
+        <ui:include src="info_editor_view.xhtml">
+            <ui:param name="controller" value="#{infoController}"/>
+            <ui:param name="action" value="updateInfo"/>
+            <ui:param name="headerTitle" value="Rediger informasjonsside"/>
+        </ui:include>
+
+    </ui:define>
+</ui:composition>

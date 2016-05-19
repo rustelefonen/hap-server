@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<!--@elvariable id="headerTitle" type="String"-->
+<!--@elvariable id="controller" type="no.rustelefonen.hapserver.controllers.InfoController"-->
+
+<ui:composition
+        xmlns:f="http://xmlns.jcp.org/jsf/core"
+        xmlns:h="http://xmlns.jcp.org/jsf/html"
+        xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+        xmlns:p="http://primefaces.org/ui">
+
+    <h:form id="infoform">
+        <p:messages />
+        <p:panelGrid columns="2" style="margin: 40px auto auto;" styleClass="table-align-top">
+            <f:facet name="header">
+                <p:outputLabel value="#{headerTitle}"/>
+            </f:facet>
+
+            <p:outputLabel value="Tittel"/>
+            <p:inputText value="#{controller.info.title}" style="width: 600px"/>
+
+            <p:outputLabel value="Innhold"/>
+            <h:panelGroup layout="block" style="width: 600px;">
+                <p:editor styleClass="resizable editor-min-size" id="editor" value="#{controller.info.htmlContent}" width="400" height="400" />
+            </h:panelGroup>
+
+            <p:outputLabel value="Legg til bilde"/>
+            <p:fileUpload id="upload"
+                          fileUploadListener="#{infoController.uploadImage}"
+                          label="Legg til bilde"
+                          mode="advanced"
+                          auto="true"
+                          dragDropSupport="true"
+                          allowTypes="/(\.|\/)(gif|jpe?g|png)$/"
+                          update="editor"
+                          oncomplete="attachResizableEvent(); attachCssToIFrame()">
+            </p:fileUpload>
+
+            <p:outputLabel value="Kategori"/>
+            <p:selectOneMenu id="info" style="width:150px" value="#{controller.categoryId}">
+                <f:selectItems value="#{controller.categoryList}" var="category" itemLabel="#{category.title}" itemValue="#{category.id}"/>
+            </p:selectOneMenu>
+
+            <h:outputText value="" />
+            <p:commandButton ajax="false" value="Lagre" action="#{controller[action]}"/>
+        </p:panelGrid>
+    </h:form>
+
+    <script>
+        function attachResizableEvent() {
+            $('.resizable').resizable({
+                start: function(event, ui) {
+                    $("iframe").css('pointer-events', 'none');
+                },
+                stop: function(event, ui) {
+                    $("iframe").css('pointer-events', 'initial');
+                }
+            });
+        }
+
+        function attachCssToIFrame(){
+            var cssLink = document.createElement("link");
+            cssLink.href = "/javax.faces.resource/template.css.jsf?ln=css";
+            cssLink.rel = "stylesheet";
+            cssLink.type = "text/css";
+            $('iframe').first().contents().find('head').append(cssLink);
+        }
+
+        $(document).ready(function() {
+            attachResizableEvent();
+            attachCssToIFrame();
+        });
+    </script>
+
+</ui:composition>
+</html>

@@ -1,0 +1,22 @@
+.table-align-top td{
+    vertical-align: top;
+}
+
+.ui-editor {
+    display: -webkit-flex;
+    display: flex;
+    flex-direction: column;
+    width: 99.5% !important;
+    height: 99.5% !important;
+}
+
+.ui-editor iframe, .ui-editor textarea{
+    width: 99.5% !important;
+    -webkit-flex: 1;
+    flex: 1;
+}
+
+.editor-min-size{
+    min-width: 400px;
+    min-height: 210px;
+}

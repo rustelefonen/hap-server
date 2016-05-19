@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <f:event listener="#{userController.redirectIfNotLoggedIn}" type="preRenderView"/>
+
+    <h:head>
+        <title>HAP - Adminpanel</title>
+        <link rel="shortcut icon" type="image/x-icon" href="#{resource['img/favicon.ico']}"/>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css"/>
+        <h:outputStylesheet library="css" name="style.css"/>
+    </h:head>
+
+    <h:body>
+        <div style="width: 978px; margin: auto;">
+            <h:form rendered="#{userController.loggedIn}">
+                <p:menubar>
+                    <p:menuitem value="Kategorier" outcome="/category/show_categories.jsf" icon="ui-icon-home"/>
+                    <p:menuitem value="Informasjonssider" outcome="/info/show_infos.jsf"/>
+                    <p:menuitem value="Forskningsdata" outcome="/research_data.jsf"/>
+                    <p:menuitem value="Logg ut" icon="ui-icon-extlink" action="#{userController.logOut()}"/>
+
+                    <f:facet name="options">
+                        <p:outputLabel rendered="#{userController.loggedIn}" style="margin-right: 10px; margin-top: 5px;"
+                                       value="Innlogget som #{userController.user.username}"/>
+                    </f:facet>
+                </p:menubar>
+            </h:form>
+
+            <div style="margin-top: 10px;">
+                <ui:insert name="content">Default content</ui:insert>
+            </div>
+        </div>
+    </h:body>
+</html>

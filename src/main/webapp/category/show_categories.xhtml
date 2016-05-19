@@ -1,0 +1,51 @@
+<ui:composition template="../WEB-INF/template/template.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:define name="content">
+        <f:metadata>
+            <f:viewParam name="statusCode" value="#{categoryController.statusCode}"/>
+            <f:viewAction action="#{categoryController.addFacesMessage()}"/>
+            <f:viewAction action="#{categoryController.loadAllCategories}" />
+        </f:metadata>
+
+        <div style="margin-top: 20px;">
+            <p:button outcome="add_category.jsf" value="Legg til kategori" style="margin-bottom: 20px;"/>
+
+            <h:form>
+                <p:growl showDetail="true"/>
+
+                <p:dataTable value="#{categoryController.categoryList}" var="category">
+                    <p:column headerText="Tittel">
+                        <p:outputLabel value="#{category.title}"/>
+                    </p:column>
+
+                    <p:column headerText="Radnummer">
+                        <p:outputLabel value="#{category.orderNumber}"/>
+                    </p:column>
+
+                    <p:column headerText="Detaljer" style="text-align: center;">
+                        <p:button value="Detaljer" outcome="/category/edit_category.xhtml" icon="fa-info-circle">
+                            <f:param value="#{category.id}" name="infoCategoryId"/>
+                        </p:button>
+                    </p:column>
+
+                    <p:column headerText="Slett" style="text-align: center;">
+                        <p:commandButton update="@form" value="Slett" action="#{categoryController.deleteInfoCategory(category.id)}" icon="ui-icon-trash">
+                            <p:confirm header="Slett kategori" message="Er du sikker på at du vil slette denne kategorien?" icon="ui-icon-alert"/>
+                        </p:commandButton>
+                    </p:column>
+                </p:dataTable>
+
+                <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+                    <p:commandButton value="Ja" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check"/>
+                    <p:commandButton value="Nei" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close"/>
+                </p:confirmDialog>
+            </h:form>
+
+        </div>
+    </ui:define>
+</ui:composition>

@@ -1,0 +1,33 @@
+<ui:composition template="WEB-INF/template/template.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+                xmlns:p="http://primefaces.org/ui">
+    <ui:define name="content">
+        <c:if test="#{userController.loggedIn}">
+            <meta http-equiv="refresh" content="0;url=category/show_categories.jsf" />
+        </c:if>
+
+            <h:form>
+                <p:messages />
+                <p:panelGrid columns="2" style="max-width: 300px; margin: 40px auto">
+                    <f:facet name="header">
+                        <p:outputLabel value="Logg inn til HAP - Adminpanel"/>
+                    </f:facet>
+
+                    <p:outputLabel value="Brukernavn"/>
+                    <p:inputText value="#{userController.user.username}">
+                        <f:validateBean disabled="true"/>
+                    </p:inputText>
+
+                    <p:outputLabel value="Passord"/>
+                    <p:password value="#{userController.password}"/>
+
+                    <h:outputText value=""/>
+                    <p:commandButton ajax="false" value="Logg inn" action="#{userController.logIn()}"/>
+                </p:panelGrid>
+            </h:form>
+    </ui:define>
+</ui:composition>
