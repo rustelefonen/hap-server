@@ -64,6 +64,7 @@
             cssLink.rel = "stylesheet";
             cssLink.type = "text/css";
             $('iframe').first().contents().find('head').append(cssLink);
+            $('iframe').first().contents().find('body').removeAttr('style');
         }
 
         $(document).ready(function() {
