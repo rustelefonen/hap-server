@@ -24,12 +24,14 @@ public class ResearchService {
     @POST
     public Response sendResearch(@DefaultValue("-1") @FormParam("age") String age,
                                  @DefaultValue("NOT_SPECIFIED") @FormParam("gender") String gender,
-                                 @DefaultValue("NOT_SPECIFIED") @FormParam("county") String county) {
+                                 @DefaultValue("NOT_SPECIFIED") @FormParam("county") String county,
+                                 @DefaultValue("NOT_SPECIFIED") @FormParam("userType") String userType) {
         ResearchUser researchUser = new ResearchUser();
 
         researchUser.setAge(firstNonNull(tryParse(age), -1));
         researchUser.setGender(getIfPresent(Gender.class, gender).or(Gender.NOT_SPECIFIED));
         researchUser.setState(county);
+        researchUser.setUserType(userType);
 
         System.out.println(researchUser.getState());
         researchUserEjb.persist(researchUser);

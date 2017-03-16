@@ -1,0 +1,43 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="hap:war exploded">
+    <output-path>$PROJECT_DIR$/target/ROOT</output-path>
+    <root id="root">
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="hap" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="Maven: com.google.guava:guava:19.0" />
+          <element id="library" level="project" name="Maven: com.h2database:h2:1.4.190" />
+          <element id="library" level="project" name="Maven: org.primefaces:primefaces:5.3" />
+          <element id="library" level="project" name="Maven: commons-codec:commons-codec:1.10" />
+          <element id="library" level="project" name="Maven: commons-io:commons-io:2.4" />
+          <element id="library" level="project" name="Maven: org.imgscalr:imgscalr-lib:4.2" />
+          <element id="library" level="project" name="Maven: org.seleniumhq.selenium:selenium-java:2.53.0" />
+          <element id="library" level="project" name="Maven: org.seleniumhq.selenium:selenium-chrome-driver:2.53.0" />
+          <element id="library" level="project" name="Maven: org.seleniumhq.selenium:selenium-remote-driver:2.53.0" />
+          <element id="library" level="project" name="Maven: cglib:cglib-nodep:2.1_3" />
+          <element id="library" level="project" name="Maven: com.google.code.gson:gson:2.3.1" />
+          <element id="library" level="project" name="Maven: org.seleniumhq.selenium:selenium-api:2.53.0" />
+          <element id="library" level="project" name="Maven: org.apache.httpcomponents:httpclient:4.5.1" />
+          <element id="library" level="project" name="Maven: org.apache.httpcomponents:httpcore:4.4.3" />
+          <element id="library" level="project" name="Maven: commons-logging:commons-logging:1.2" />
+          <element id="library" level="project" name="Maven: org.seleniumhq.selenium:selenium-edge-driver:2.53.0" />
+          <element id="library" level="project" name="Maven: org.apache.commons:commons-exec:1.3" />
+          <element id="library" level="project" name="Maven: org.seleniumhq.selenium:selenium-firefox-driver:2.53.0" />
+          <element id="library" level="project" name="Maven: org.seleniumhq.selenium:selenium-ie-driver:2.53.0" />
+          <element id="library" level="project" name="Maven: net.java.dev.jna:jna:4.1.0" />
+          <element id="library" level="project" name="Maven: net.java.dev.jna:jna-platform:4.1.0" />
+          <element id="library" level="project" name="Maven: org.seleniumhq.selenium:selenium-safari-driver:2.53.0" />
+          <element id="library" level="project" name="Maven: io.netty:netty:3.5.7.Final" />
+          <element id="library" level="project" name="Maven: org.seleniumhq.selenium:selenium-support:2.53.0" />
+          <element id="library" level="project" name="Maven: org.seleniumhq.selenium:selenium-leg-rc:2.53.0" />
+        </element>
+      </element>
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$PROJECT_DIR$/target/ROOT/META-INF/MANIFEST.MF" />
+      </element>
+      <element id="javaee-facet-resources" facet="hap/web/Web" />
+    </root>
+  </artifact>
+</component>

@@ -27,7 +27,7 @@ public class ResearchUserEjb {
     private EntityManager entityManager;
     private static final String COMMA = ",";
     private static final String NEW_LINE = "\n";
-    private static final String FILE_HEADER = "age,gender,state";
+    private static final String FILE_HEADER = "age,gender,state,userType";
 
     public ResearchUserEjb(){}
 
@@ -70,6 +70,8 @@ public class ResearchUserEjb {
                     : "Ikke spesifisert");
             stringBuilder.append(COMMA);
             stringBuilder.append(researchUser.getState());
+            stringBuilder.append(COMMA);
+            stringBuilder.append(researchUser.getUserType());
             stringBuilder.append(NEW_LINE);
         }
 

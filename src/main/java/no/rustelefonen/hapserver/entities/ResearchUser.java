@@ -27,6 +27,8 @@ public class ResearchUser {
     private Gender gender;
     private String state;
 
+    private String userType;
+
     public long getId() {
         return id;
     }
@@ -57,5 +59,13 @@ public class ResearchUser {
 
     public void setState(String state) {
         this.state = state;
+    }
+
+    public String getUserType() {
+        return userType;
+    }
+
+    public void setUserType(String userType) {
+        this.userType = userType;
     }
 }
