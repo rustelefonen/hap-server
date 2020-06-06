@@ -4,12 +4,17 @@
              version="2.0" xmlns="http://java.sun.com/xml/ns/persistence">
     <persistence-unit name="PG6100" transaction-type="JTA">
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+        <jta-data-source>jboss/datasource/mariadb</jta-data-source>
         <class>no.rustelefonen.hapserver.entities.Info</class>
         <class>no.rustelefonen.hapserver.entities.Category</class>
         <class>no.rustelefonen.hapserver.entities.ResearchUser</class>
 
         <properties>
-            <property name="hibernate.hbm2ddl.auto" value="create"/>
+            <!--
+             Set to "create" for initial deployment.
+             Then redeploy with "update" immediately after schema is created.
+            -->
+            <property name="hibernate.hbm2ddl.auto" value="update"/>
             <property name="hibernate.hbm2ddl.import_files" value="init.sql"/>
             <property name="hibernate.connection.CharSet" value="utf8"/>
             <property name="hibernate.connection.characterEncoding" value="utf8"/>

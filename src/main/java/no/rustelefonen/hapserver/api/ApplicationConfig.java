@@ -8,7 +8,7 @@ import java.util.Set;
 /**
  * Created by lon on 05/04/16.
  */
-@ApplicationPath("no/rustelefonen/hapserver/api")
+@ApplicationPath("api")
 public class ApplicationConfig extends Application {
     private Set<Class<?>> classes;
 
